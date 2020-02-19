@@ -1,0 +1,22 @@
+<ActionBar title="Perfil de cliente">
+    <NavigationButton android.systemIcon="ic_menu_back"></NavigationButton>
+    <ActionItem ios:position="right" ios.systemIcon="2">
+        <Button (tap)="onBack()"></Button>
+    </ActionItem>
+</ActionBar>
+<StackLayout height="100%">
+    <!-- Image with CSS and an icon fonts -->
+    <Image [src]="imagen" width="200" borderRadius="100" marginTop="20"></Image>
+
+
+    <FlexboxLayout marginTop="20" textAlignment="center">
+        <Label text="Nombres y Apellidos: " textWrap="true" fontSize="17" fontWeight="bold"></Label>
+        <Label [text]="nombres_completos" textWrap="true" fontSize="17"></Label>
+    </FlexboxLayout>
+    <FlexboxLayout marginTop="20" textAlignment="center">
+        <Label text="Correo: " textWrap="true" fontSize="17" fontWeight="bold"></Label>
+        <Label [text]="correo" textWrap="true" fontSize="17"></Label>
+    </FlexboxLayout>
+
+
+</StackLayout>
