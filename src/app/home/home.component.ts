@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UsuarioService } from '../services/usuario.service';
 import { RouterExtensions } from "nativescript-angular/router";
+import { Usuario } from '../models/usuario';
 
 @Component({
     selector: "Home",
@@ -8,24 +9,24 @@ import { RouterExtensions } from "nativescript-angular/router";
 })
 export class HomeComponent implements OnInit {
 
-    listaPosts: any = [];
+    public listaUsuarios:  Usuario[] = [];
    
 
 
     constructor(private _usuarioService: UsuarioService , private router: RouterExtensions) {
+     }
         // Use the component constructor to inject providers.}
 
-    }
 
     ngOnInit(): void {
         // Init your component properties here.
-        this.listaUsuario();
+        this.listarUsuario();
     }
 
-    listaUsuario(){
+    listarUsuario() : void{
        this._usuarioService.getUsuarios().subscribe(response => {
             
-            this.listaPosts = response["data"]; 
+            this.listaUsuarios = response["data"]; 
 
         }, error =>{
             console.log(error);
@@ -35,10 +36,9 @@ export class HomeComponent implements OnInit {
        
     }
 
-    onTap(id){
-        console.log(id);
-   
-        this.router.navigate(["/detalle-usuario", id]);
+    onTap(id : string) : void{
+
+       this.router.navigate(["/detalle-usuario", id]);
         
     }
 

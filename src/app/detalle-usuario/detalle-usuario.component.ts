@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { UsuarioService } from '../services/usuario.service';
 import { ActivatedRoute } from '@angular/router';
+import { Usuario } from '../models/usuario';
 
 
 @Component({
@@ -10,17 +11,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalleUsuarioComponent implements OnInit {
 
-  id_usuario : string;
-  imagen: string;
-  nombres_completos: string;
-  correo: string;
+
+  public usuario: Usuario[] = [];
+
+  public id: string;
+
+  
 
   constructor(private _usuarioService: UsuarioService, private router: RouterExtensions , private route: ActivatedRoute) {
 
-   // let nombreproducto = {nombre:this.route.snapshot.paramMap.get('id')};
+    // Recibe el parametro id de la vista home 
 
-
-   this.id_usuario =  this.route.snapshot.paramMap.get('id');
+    this.id =  this.route.snapshot.paramMap.get('id');
 
    }
 
@@ -34,12 +36,12 @@ export class DetalleUsuarioComponent implements OnInit {
 
   detalleUsuario(){
 
-    this._usuarioService.detailUsuario(this.id_usuario).subscribe(response => {
-      console.dir(response);
+    this._usuarioService.detailUsuario(this.id).subscribe(response => {
+      
 
-      this.imagen = response["data"]["avatar"];
-      this.nombres_completos = response["data"]["first_name"] + " " +response["data"]["last_name"];
-      this.correo = response["data"]["email"];
+      this.usuario = response["data"];
+
+      console.dir(this.usuario);
 
     },
     error =>{

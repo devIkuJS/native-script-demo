@@ -6,16 +6,16 @@
 </ActionBar>
 <StackLayout height="100%">
     <!-- Image with CSS and an icon fonts -->
-    <Image [src]="imagen" width="200" borderRadius="100" marginTop="20"></Image>
+    <Image [src]="usuario['avatar']" width="200" borderRadius="100" marginTop="20"></Image>
 
 
     <FlexboxLayout marginTop="20" textAlignment="center">
         <Label text="Nombres y Apellidos: " textWrap="true" fontSize="17" fontWeight="bold"></Label>
-        <Label [text]="nombres_completos" textWrap="true" fontSize="17"></Label>
+        <Label text="usuario['first_name'] usuario['last_name']" textWrap="true" fontSize="17"></Label>
     </FlexboxLayout>
     <FlexboxLayout marginTop="20" textAlignment="center">
         <Label text="Correo: " textWrap="true" fontSize="17" fontWeight="bold"></Label>
-        <Label [text]="correo" textWrap="true" fontSize="17"></Label>
+        <Label [text]="usuario['email']" textWrap="true" fontSize="17"></Label>
     </FlexboxLayout>
 
 
